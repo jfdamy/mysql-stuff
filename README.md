@@ -47,3 +47,9 @@ Your wss is often < database size, because eg: if you store transactions in a ba
 So you will say that "show engine innodb status" will give you "Buffer pool hit rate 1000 / 1000", which give you the number of time mysql hit the pool to satisfy queries. Which it's the same has customizing the buffer pool size while watching the innodb_buffer_pool_reads (aiming to 0). And you will be right ;).
 
 >Innodb_buffer_pool_read_requests / (Innodb_buffer_pool_read_requests + Innodb_buffer_pool_reads) * 100 = InnoDB Buffer Pool hit ratio
+
+## Usage of your indexes
+	The count_star column show how many times each index was used since MySQL was started.	
+```sql
+	select INDEX_NAME, COUNT_STAR from performance_schema.table_io_waits_summary_by_index_usage where object_schema = 'DB_NAME' and object_name = 'TABLE_NAME';
+```
