@@ -49,7 +49,8 @@ So you will say that "show engine innodb status" will give you "Buffer pool hit 
 >Innodb_buffer_pool_read_requests / (Innodb_buffer_pool_read_requests + Innodb_buffer_pool_reads) * 100 = InnoDB Buffer Pool hit ratio
 
 ## Usage of your indexes
-	The count_star column show how many times each index was used since MySQL was started.	
+The count_star column show how many times each index was used since MySQL was started.	
+
 ```sql
 	select INDEX_NAME, COUNT_STAR from performance_schema.table_io_waits_summary_by_index_usage where object_schema = 'DB_NAME' and object_name = 'TABLE_NAME';
 ```
